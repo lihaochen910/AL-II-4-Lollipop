@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kanbaru.alii"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="18"
+        android:targetSdkVersion="22" />
+	
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>  <!-- sdcard读权限 -->  
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> <!-- sdcard写权限 -->
+	
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" android:isGame="false" android:multiArch="false">
+        <activity
+            android:name=".AppListActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <receiver android:name=".tools.MyBroadcastReceiver">
+            	<action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.SCREEN_OFF" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="com.kanbaru.alii.tools.LockService.destroy" />
+        </receiver>
+        <service android:name=".tools.LockService">
+            
+        </service>
+    </application>
+
+</manifest>
